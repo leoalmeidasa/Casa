@@ -121,6 +121,7 @@ let W=innerWidth, Hh=innerHeight;
 // orbit state
 const orbit = { theta: -0.9, phi: 0.95, radius: 19, target: new THREE.Vector3(0,0.4,0) };
 let presenting=false, touring=false;
+let last=performance.now();
 
 init();
 animate();
@@ -518,7 +519,6 @@ const lerp=(a,b,t)=>a+(b-a)*t;
 const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
 
 // ---------- loop ----------
-let last=performance.now();
 function animate(){
   requestAnimationFrame(animate);
   const now=performance.now(), dt=(now-last)/1000; last=now;
